@@ -1,0 +1,43 @@
+<div class="jumbotron">
+	<h3>{{app}}</h3>
+	<ui-accordions>
+		<ui-accordion title="Quem Somos">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque consequat arcu elementum, auctor nisi in, euismod odio. Maecenas eget augue ut augue imperdiet semper in id leo. Aliquam erat volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ut vulputate dolor. Morbi at est sit amet augue semper rutrum. Aliquam placerat lacus ut orci mattis venenatis. Ut blandit libero diam, et ullamcorper massa placerat sit amet. In semper at ante id scelerisque. In hac habitasse platea dictumst. Maecenas semper arcu tellus, ut mattis nunc finibus eu. Fusce volutpat sem et leo sollicitudin aliquam. Ut a tincidunt nulla. Nullam ullamcorper quis massa eu sodales.
+		</ui-accordion>
+		<ui-accordion title="O que é uma lista telefonica ?">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque consequat arcu elementum, auctor nisi in, euismod odio. Maecenas eget augue ut augue imperdiet semper in id leo. Aliquam erat volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ut vulputate dolor. Morbi at est sit amet augue semper rutrum. Aliquam placerat lacus ut orci mattis venenatis. Ut blandit libero diam, et ullamcorper massa placerat sit amet. In semper at ante id scelerisque. In hac habitasse platea dictumst. Maecenas semper arcu tellus, ut mattis nunc finibus eu. Fusce volutpat sem et leo sollicitudin aliquam. Ut a tincidunt nulla. Nullam ullamcorper quis massa eu sodales. 
+		</ui-accordion>
+		<ui-accordion title="Fale Conosco">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque consequat arcu elementum, auctor nisi in, euismod odio. Maecenas eget augue ut augue imperdiet semper in id leo. Aliquam erat volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ut vulputate dolor. Morbi at est sit amet augue semper rutrum. Aliquam placerat lacus ut orci mattis venenatis. Ut blandit libero diam, et ullamcorper massa placerat sit amet. In semper at ante id scelerisque. In hac habitasse platea dictumst. Maecenas semper arcu tellus, ut mattis nunc finibus eu. Fusce volutpat sem et leo sollicitudin aliquam. Ut a tincidunt nulla. Nullam ullamcorper quis massa eu sodales. 
+		</ui-accordion>
+	</ui-accordions>
+	<!--<ui-alert title="Ops, aconteceu um probleminha.">
+		Não foi possível carregar os dados!
+	</ui-alert>-->
+	<ui-alert title="error"></ui-alert>
+	<input class="form-control" type="text" placeholder="O que você está buscando ?" ng-model="criterioDeBusca">
+	<table class="table">
+		<tr ng-show="contatos.length > 0">
+			<th></th>
+			<th>Serial</th>
+			<th><a href="" ng-click="ordenarPor('nome')">Nome</a></th>
+			<th><a href="" ng-click="ordenarPor('telefone')">Telefone</a></th>
+			<th>Operadoras</th>
+			<th>DataNasc</th>
+			<th>Data</th>
+		</tr>
+		<tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter:criterioDeBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao">
+			<td><input type="checkbox" ng-model="contato.selecionado"/></td>
+			<td>{{contato.serial}}</td>
+			<td><a href="#/detalhesContato{{contato.id}}">{{contato.nome | name | ellipsis: 10}}</a></td>
+			<td>{{contato.telefone}}</td>
+			<td>{{contato.operadora.nome | lowercase}}</td>
+			<td>{{contato.dataNasc}}</td>
+			<td>{{contato.data | date: "dd/MM/yyyy hh:mm"}}</td>
+			<td><div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div></td>
+		</tr>
+	</table>
+	<hr/>
+	<a class="btn btn-primary btn-block" href="#/novoContato">Novo Contato</a>
+	<button class="btn btn-danger btn-block" ng-click="excluirContatos(contatos)" ng-show="isContatoSelecionado(contatos)">Apagar Contatos</button>	
+</div>
